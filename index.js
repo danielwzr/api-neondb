@@ -3,6 +3,7 @@ const { Pool } = require("pg");
 
 const app = express();
 app.use(express.json()); // permite receber JSON no body
+app.use(express.urlencoded({ extended: true }));
 
 // conexão com Neon
 const pool = new Pool({
@@ -40,3 +41,4 @@ app.post("/users", async (req, res) => {
 app.listen(8080, () => {
   console.log("Servidor rodando em http://localhost:8080");
 });
+
