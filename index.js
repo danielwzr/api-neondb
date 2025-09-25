@@ -24,11 +24,11 @@ app.get("/users", async (req, res) => {
 
 // rota POST → insere um usuário
 app.post("/users", async (req, res) => {
-  const { name, email } = req.body; // exemplo de colunas
+  const { nome, email } = req.body; // exemplo de colunas
   try {
     const result = await pool.query(
-      "INSERT INTO users (name, email) VALUES ($1, $2) RETURNING *",
-      [name, email]
+      "INSERT INTO users (nome, email) VALUES ($1, $2) RETURNING *",
+      [nome, email]
     );
     res.json(result.rows[0]);
   } catch (err) {
@@ -41,4 +41,5 @@ app.post("/users", async (req, res) => {
 app.listen(8080, () => {
   console.log("Servidor rodando em http://localhost:8080");
 });
+
 
